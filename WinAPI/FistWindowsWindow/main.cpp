@@ -27,7 +27,7 @@ int WINAPI WinMain(HINSTANCE hin, HINSTANCE hPrev, PSTR cmd, int Cshow) {
 	wnd.hbrBackground = reinterpret_cast<HBRUSH>(GetStockObject(WHITE_BRUSH));
 	wnd.lpszMenuName = NULL;
 	wnd.lpszClassName = TEXT("MyWindow");
- 
+
 	RegisterClass(&wnd);
 
 	hWnd = CreateWindow(TEXT("MyWindow"), TEXT("Sample App"),
