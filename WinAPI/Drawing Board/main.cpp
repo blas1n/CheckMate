@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include <tchar.h>
 #include <string>
+#include <list>
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);
 
@@ -17,7 +18,7 @@ int APIENTRY _tWinMain(HINSTANCE hin, HINSTANCE hPrev, LPTSTR cmd, int Cshow) {
 	wnd.hInstance = hin;
 	wnd.hIcon = LoadIcon(NULL, IDC_ICON);
 	wnd.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wnd.hbrBackground = reinterpret_cast<HBRUSH>(GetStockObject(WHITE_BRUSH));
+	wnd.hbrBackground = reinterpret_cast<HBRUSH>(GetStockObject(BLACK_BRUSH));
 	wnd.lpszMenuName = NULL;
 	wnd.lpszClassName = TEXT("MyWindow");
 
@@ -41,54 +42,50 @@ int APIENTRY _tWinMain(HINSTANCE hin, HINSTANCE hPrev, LPTSTR cmd, int Cshow) {
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
-	// 마우스가 클릭 중인지 확인하는 변수
-	static bool bMouseDown = false;
-	// 선의 굵기를 가지는 변수
-	static int thickness = 3;
-	// 선의 색을 가지는 변수
-	static COLORREF color = RGB(0, 0, 0);
+	static bool isMouseDown = false;
+
+	static std::list<POINT> draw;
+	static std::list<int> thickness;
+	static std::list<COLORREF> color;
+
+	static int nowThickness = 3;
+	static COLORREF nowColor = RGB(0, 0, 0);
 
 	switch (iMsg) {
-	// 마우스를 누르면 선을 그리고 떼면 그리지 않는다
 	case WM_LBUTTONDOWN: {
-		HDC hDC = GetDC(hWnd);
+		isMouseDown = true;
 
-		bMouseDown = true;
-		MoveToEx(hDC, LOWORD(lParam), HIWORD(lParam), nullptr);
-		ReleaseDC(hWnd, hDC);
+		draw.push_back(POINT{ LOWORD(lParam), HIWORD(lParam) });
+		thickness.push_back(nowThickness);
+		color.push_back(nowColor);
+
 		break;
 	}
-	case WM_LBUTTONUP:
-		bMouseDown = false;
+	case WM_LBUTTONUP: {
+		isMouseDown = false;
 		break;
+	}
 	case WM_MOUSEMOVE: {
-		if (bMouseDown) {
-			HDC hDC = GetDC(hWnd);
-			HPEN hMyPen = nullptr;
-			HPEN hOldPen = nullptr;
+		if (isMouseDown) {
+			draw.push_back(POINT{ LOWORD(lParam), HIWORD(lParam) });
+			thickness.push_back(nowThickness);
+			color.push_back(nowColor);
 
-			hMyPen = CreatePen(PS_SOLID, thickness, color);
-			hOldPen = reinterpret_cast<HPEN>(SelectObject(hDC, hMyPen));
-
-			LineTo(hDC, LOWORD(lParam), HIWORD(lParam));
-			ReleaseDC(hWnd, hDC);
+			InvalidateRect(hWnd, NULL, false);
 		}
 		break;
 	}
-	// 마우스 휠을 움직이면 선의 굵기를 변경한다
 	case WM_MOUSEWHEEL: {
-		// 휠이 움직인 것을 담는다
 		int wheelMove = GET_WHEEL_DELTA_WPARAM(wParam);
+		nowThickness += wheelMove > 0 ? 1 : -1;
 
-		// 휠이 움짐이면 굵기를 변경한다
-		thickness += wheelMove > 0 ? 1 : -1;
+		if (nowThickness > 40) { nowThickness = 40; }
+		else if (nowThickness < 1) { nowThickness = 1; }
 
-		// 굵기의 제한을 둔다
-		if (thickness > 40) { thickness = 40; }
-		else if (thickness < 1) { thickness = 1; }
+		InvalidateRect(hWnd, NULL, false);
+
 		break;
 	}
-	// 색상을 변경하는 키
 	case WM_KEYDOWN: {
 		HDC hDC = GetDC(hWnd);
 		TCHAR key = wParam;
@@ -97,25 +94,53 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 		switch (key)
 		{
 		case 'Q':
-			color = RGB(0, 0, 0);
+			nowColor = RGB(0, 0, 0);
 			break;
 		case 'W':
-			color = RGB(255, 0, 0);
+			nowColor = RGB(255, 0, 0);
 			break;
 		case 'E':
-			color = RGB(0, 0, 255);
+			nowColor = RGB(0, 0, 255);
 			break;
 		case 'R':
-			color = RGB(0, 255, 0);
+			nowColor = RGB(0, 255, 0);
 			break;
 		}
 		
 		break;
 	}
-	// X 키를 누르면 종료한다
-	case WM_DESTROY:
+	case WM_PAINT: {
+
+		HDC hDC = GetDC(hWnd);
+		HPEN hMyPen = nullptr;
+		HPEN hOldPen = nullptr;
+
+		if (draw.size() > 1) { 
+			std::list<POINT>::iterator drawIter = draw.begin();
+			std::list<int>::iterator thickIter = thickness.begin();
+			std::list<COLORREF>::iterator colorIter = color.begin();
+
+			MoveToEx(hDC, draw.front().x, draw.front().y, nullptr);
+
+			for (auto i : draw) {
+				hMyPen = CreatePen(PS_SOLID, *(thickIter++), *(colorIter++));
+				hOldPen = reinterpret_cast<HPEN>(SelectObject(hDC, hMyPen));
+
+				LineTo(hDC, drawIter->x, drawIter->y);
+				drawIter++;
+
+				SelectObject(hDC, hOldPen);
+				DeleteObject(hMyPen);
+			}
+		}
+
+		ReleaseDC(hWnd, hDC);
+		break;
+	}
+	case WM_DESTROY: {
 		PostQuitMessage(0);
 		break;
+	}
 	}
 
 	return DefWindowProc(hWnd, iMsg, wParam, lParam);
