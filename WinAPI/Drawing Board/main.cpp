@@ -18,7 +18,7 @@ int APIENTRY _tWinMain(HINSTANCE hin, HINSTANCE hPrev, LPTSTR cmd, int Cshow) {
 	wnd.hInstance = hin;
 	wnd.hIcon = LoadIcon(NULL, IDC_ICON);
 	wnd.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wnd.hbrBackground = reinterpret_cast<HBRUSH>(GetStockObject(BLACK_BRUSH));
+	wnd.hbrBackground = reinterpret_cast<HBRUSH>(GetStockObject(WHITE_BRUSH));
 	wnd.lpszMenuName = NULL;
 	wnd.lpszClassName = TEXT("MyWindow");
 
@@ -47,6 +47,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 	static std::list<POINT> draw;
 	static std::list<int> thickness;
 	static std::list<COLORREF> color;
+	static std::list<bool> click;
 
 	static int nowThickness = 3;
 	static COLORREF nowColor = RGB(0, 0, 0);
@@ -58,11 +59,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 		draw.push_back(POINT{ LOWORD(lParam), HIWORD(lParam) });
 		thickness.push_back(nowThickness);
 		color.push_back(nowColor);
+		click.push_back(isMouseDown);
 
 		break;
 	}
 	case WM_LBUTTONUP: {
 		isMouseDown = false;
+		draw.push_back(POINT{ LOWORD(lParam), HIWORD(lParam) });
+		thickness.push_back(nowThickness);
+		color.push_back(nowColor);
+		click.push_back(isMouseDown);
 		break;
 	}
 	case WM_MOUSEMOVE: {
@@ -70,6 +76,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 			draw.push_back(POINT{ LOWORD(lParam), HIWORD(lParam) });
 			thickness.push_back(nowThickness);
 			color.push_back(nowColor);
+			click.push_back(isMouseDown);
 
 			InvalidateRect(hWnd, NULL, false);
 		}
@@ -106,19 +113,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 			nowColor = RGB(0, 255, 0);
 			break;
 		}
-		
+
 		break;
 	}
 	case WM_PAINT: {
+		bool upEdge = false;
+		PAINTSTRUCT ps = {};
 
-		HDC hDC = GetDC(hWnd);
+		HDC hDC = BeginPaint(hWnd, &ps);
 		HPEN hMyPen = nullptr;
 		HPEN hOldPen = nullptr;
 
-		if (draw.size() > 1) { 
-			std::list<POINT>::iterator drawIter = draw.begin();
+		if (draw.size() > 1) {
 			std::list<int>::iterator thickIter = thickness.begin();
 			std::list<COLORREF>::iterator colorIter = color.begin();
+			std::list<bool>::iterator clickIter = click.begin();
 
 			MoveToEx(hDC, draw.front().x, draw.front().y, nullptr);
 
@@ -126,14 +135,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) {
 				hMyPen = CreatePen(PS_SOLID, *(thickIter++), *(colorIter++));
 				hOldPen = reinterpret_cast<HPEN>(SelectObject(hDC, hMyPen));
 
-				LineTo(hDC, drawIter->x, drawIter->y);
-				drawIter++;
+				if (!(*(clickIter)))
+					upEdge = true;
 
+				else {
+					if ((*(clickIter)) && upEdge) {
+						upEdge = false;
+						MoveToEx(hDC, i.x, i.y, nullptr);
+					}
+
+					LineTo(hDC, i.x, i.y);
+				}
+					
+				clickIter++;
 				SelectObject(hDC, hOldPen);
 				DeleteObject(hMyPen);
 			}
 		}
 
+		EndPaint(hWnd, &ps);
 		ReleaseDC(hWnd, hDC);
 		break;
 	}
