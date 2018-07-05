@@ -19,16 +19,6 @@ LRESULT CALLBACK WinProc::WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lP
 		break;
 	}
 
-	/*case WM_MOUSEWHEEL: {
-		int wheelMove = GET_WHEEL_DELTA_WPARAM(wParam);
-		fontSize += wheelMove > 0 ? 1 : -1;
-		if (fontSize > 200) { fontSize = 200; }
-		else if (fontSize < 1) { fontSize = 1; }
-
-		InvalidateRect(hWnd, NULL, true);
-		break;
-	}*/
-
 	case WM_PAINT: {
 		PAINTSTRUCT ps;
 		HDC hDC = BeginPaint(hWnd, &ps);
