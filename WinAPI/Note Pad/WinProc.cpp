@@ -6,11 +6,21 @@ LRESULT CALLBACK WinProc::WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lP
 	static UINT fontSize = 30;
 
 	switch (iMsg) {
+	case WM_CREATE: {
+		CreateCaret(hWnd, NULL, 1, 25);
+		SetCaretPos(2, 4);
+		ShowCaret(hWnd);
+
+		break;
+	}
 	case WM_CHAR: {
 		if (wParam == VK_BACK) {
 			if (!(writeList.empty()))
 				writeList.erase(writeList.end() - 1, writeList.end());
 		}
+
+		else if (wParam == VK_TAB)
+			writeList += TEXT("    ");
 
 		else
 			writeList += static_cast<TCHAR>(wParam);
@@ -26,25 +36,35 @@ LRESULT CALLBACK WinProc::WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lP
 		HFONT hMyFont = CreateFont(fontSize, 0, 0, 0, FW_NORMAL, 0, 0, 0, ANSI_CHARSET, 0, 0, 0, 0, TEXT("consolas"));
 		HFONT hOldFont = reinterpret_cast<HFONT>(SelectObject(hDC, hMyFont));
 
-		
 		RECT area;
 		GetClientRect(hWnd, &area);
 
 		DrawText(hDC, writeList.c_str(), writeList.length(), &area, DT_LEFT | DT_WORDBREAK | DT_EDITCONTROL);
+
+		int line = 0;
+		for (auto i : writeList)
+			if (i == VK_RETURN) { line++; }
+
+		int width, lastNewLine;
+		GetCharWidth(hDC, NULL, NULL, &width);
 		
+		lastNewLine = writeList.rfind(VK_RETURN);
+		if (lastNewLine == std::string::npos) { lastNewLine = 0; }
+		else { lastNewLine++; }
+
+		SetCaretPos((writeList.length() - lastNewLine) * width, 4 + (line * fontSize));
+
 		EndPaint(hWnd, &ps);
 		break;
 	}
 
-	case WM_SIZE: {
+	case WM_SIZE:
 		InvalidateRect(hWnd, NULL, true);
 		break;
-	}
 
-	case WM_DESTROY: {
+	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
-	}
 	}
 
 	return DefWindowProc(hWnd, iMsg, wParam, lParam);
