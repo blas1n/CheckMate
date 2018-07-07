@@ -5,7 +5,8 @@ Window::Window(const str& className, const str& windowName,
 	HINSTANCE hIn, void* pData) {
 
 	m_hWnd = CreateWindow(className.c_str(), windowName.c_str(),
-		WS_OVERLAPPEDWINDOW, nX, nY, nWidth, nHeight, nullptr,
+		WS_OVERLAPPEDWINDOW | WS_VSCROLL | ES_AUTOHSCROLL |
+		ES_MULTILINE, nX, nY, nWidth, nHeight, nullptr,
 		nullptr, hIn, pData);
 }
 
