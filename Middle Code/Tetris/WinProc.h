@@ -3,16 +3,19 @@
 
 #include <Windows.h>
 #include <string>
+#include "Renderer.h"
 
-class WinProc : private WNDCLASS {
+class WinProc : private WNDCLASSEX {
 	typedef std::basic_string<TCHAR> str;
 private:
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg,
 		WPARAM wParam, LPARAM lParam);
 public:
+	WinProc();
+
 	WinProc(HINSTANCE hIn);
 
-	virtual ~WinProc();
+	~WinProc();
 
 	str GetName() const;
 };
