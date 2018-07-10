@@ -4,19 +4,23 @@
 
 LRESULT CALLBACK WinProc::WndProc(HWND hWnd, UINT iMsg,
 	WPARAM wParam, LPARAM lParam) {
+	HDC hDC = nullptr;
+	HDC comDC = nullptr;
 
-	switch (iMsg)
-	{
-	case WM_PAINT: {
-		PAINTSTRUCT ps;
-		HDC hDC = BeginPaint(hWnd, &ps);
-		Render->Paint(hDC);
-		//renderer->Paint(hDC);
-		EndPaint(hWnd, &ps);
+	switch (iMsg) {
+	case WM_CREATE:
+		hDC = GetDC(hWnd);
+		comDC = CreateCompatibleDC(hDC);
+		Render->Init(&hDC, &comDC);
+
+	case WM_PAINT:
+		Render->Paint();
 		break;
-	}
 
 	case WM_DESTROY:
+		Render->~Renderer();
+		DeleteDC(comDC);
+		ReleaseDC(hWnd, hDC);
 		PostQuitMessage(0);
 		break;
 	}

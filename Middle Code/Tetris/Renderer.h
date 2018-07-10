@@ -9,16 +9,25 @@
 
 class Renderer : public Singleton<Renderer> {
 private:
-	const UINT iTestCount = 5000;
+	UINT* tool;
+
+	HDC hDC;
+	HDC comDC;
+	HBITMAP hBack;
+	HBITMAP hOld;
+
+	const UINT iTestCount = 1000;
 	UINT iCount;
 	DWORD timePrev;
-	CHAR timeStr[20] = { 0, };
+	CHAR timeStr[20];
 public:
 	Renderer();
 
+	VOID Init(HDC* hDC, HDC* comDC);
+
 	virtual ~Renderer();
 	
-	VOID Paint(HDC hDC);
+	VOID Paint();
 };
 
 #endif

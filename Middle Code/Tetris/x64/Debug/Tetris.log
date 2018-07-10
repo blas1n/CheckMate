@@ -1,0 +1,8 @@
+﻿  main.cpp
+  MyApp.cpp
+  Renderer.cpp
+d:\programming\git\cpp_programming\middle code\tetris\renderer.cpp(51): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Window.cpp
+  WinProc.cpp
+  코드를 생성하고 있습니다...
+  Tetris.vcxproj -> D:\Programming\Git\Cpp_Programming\Middle Code\Tetris\x64\Debug\Tetris.exe

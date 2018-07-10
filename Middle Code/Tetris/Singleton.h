@@ -1,7 +1,6 @@
 #ifndef __SINGLETON_H__
 #define __SINGLETON_H__
 
-#include "WinProc.h"
 #include <cstdlib>
 
 template <class T>
@@ -16,9 +15,8 @@ protected:
 
 public:
 	static T* GetInstance() {
-		if (mInstance == nullptr) {
+		if (mInstance == nullptr)
 			mInstance = new T;
-		}
 
 		return mInstance;
 	};
