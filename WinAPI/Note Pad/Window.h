@@ -4,8 +4,7 @@
 #include <Windows.h>
 #include <string>
 
-class Window
-{
+class Window {
 	typedef std::basic_string<TCHAR> str;
 private:
 	HWND m_hWnd = nullptr;

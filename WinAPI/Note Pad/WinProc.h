@@ -4,8 +4,7 @@
 #include <Windows.h>
 #include <string>
 
-class WinProc : private WNDCLASS
-{
+class WinProc : private WNDCLASS {
 	typedef std::basic_string<TCHAR> str;
 private:
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);
