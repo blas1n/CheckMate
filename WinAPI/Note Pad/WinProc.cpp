@@ -47,7 +47,7 @@ LRESULT CALLBACK WinProc::WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lP
 
 		int width, lastNewLine;
 		GetCharWidth(hDC, NULL, NULL, &width);
-		
+
 		lastNewLine = writeList.rfind(VK_RETURN);
 		if (lastNewLine == std::string::npos) { lastNewLine = 0; }
 		else { lastNewLine++; }

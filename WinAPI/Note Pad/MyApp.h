@@ -7,7 +7,7 @@
 
 class MyApp {
 private:
-	WinProc* m_pClass = nullptr;
+	WinProc * m_pClass = nullptr;
 	Window* m_pWinMain = nullptr;
 public:
 	MyApp(HINSTANCE hIn);
