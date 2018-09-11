@@ -1,4 +1,5 @@
 # Cpp-programming
 These are programs made in C++ language.  
-The Light Code have a console program of  about 100 lines.  
-The Middelle Code have a concole program of about 200 lines.  
+Just C++ is pure c++ code. (Not use WinAPI and Direct X).  
+WinAPI is My WinAPI study and project.  
+Direct X is My Direct X study and project.
