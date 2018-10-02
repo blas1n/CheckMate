@@ -14,7 +14,13 @@ bool SystemClass::Init() {
 
 	InitWindows(screenWidth, screenHeight);
 
-	m_Graphics = new GraphicsClass;
+	m_Input = new InputClass();
+	if (!m_Input)
+		return false;
+
+	m_Input->Init();
+
+	m_Graphics = new GraphicsClass();
 	if (!m_Graphics)
 		return false;
 
