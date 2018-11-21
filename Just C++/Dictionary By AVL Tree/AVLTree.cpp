@@ -3,7 +3,7 @@
 
 AVLTree::~AVLTree() {
   	delete m_root;
-	m_root;
+	m_root = nullptr;
 }
 
 AVLNode* AVLTree::Insert(AVLNode* root, const string& key, const string& value) {
