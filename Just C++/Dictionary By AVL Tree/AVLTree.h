@@ -6,15 +6,11 @@
 using std::string;
 
 class AVLTree {
-private:
-	AVLNode* m_root;
-
 public:
-	AVLTree() = default;
-	~AVLTree();
-
 	AVLNode* Insert(AVLNode*, const string&, const string&);
 	AVLNode* Search(AVLNode*, const string&);
+	AVLNode* Delete(AVLNode*&, const string&);
+	void Inorder(AVLNode*);
 
 private:
 	int Height(AVLNode*);

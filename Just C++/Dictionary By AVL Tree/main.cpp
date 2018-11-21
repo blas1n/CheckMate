@@ -1,7 +1,8 @@
 #include "AVLTree.h"
 #include <iostream>
 
-using namespace std;
+using std::cout;
+using std::endl;
 
 bool Choice(int& choice);
 void Input(string* key, string* value);
@@ -11,8 +12,10 @@ int main() {
 	AVLNode* root = nullptr;
 	AVLNode* result = nullptr;
 
-	string inputKey, inputValue;
+	string inputKey, inputValue, resultString;
 	int choice;
+
+	cout << "치고 싶은 거 다쳐도 되는 백과사전\n" << endl;
 
 	while (Choice(choice)) {
 		switch (choice) {
@@ -26,9 +29,26 @@ int main() {
 			Input(&inputKey, &inputValue);
 			root = avl->Insert(root, inputKey, inputValue);
 			break;
+
+		case 3:
+			Input(&inputKey, nullptr);
+
+			result = avl->Delete(root, inputKey);
+			cout << "삭제한 단어: " << result << endl;
+
+			break;
+
+		case 4:
+			avl->Inorder(root);
+			break;
 		}
 
 		cout << endl << endl;
+	}
+
+	if (result) {
+		delete result;
+		result = nullptr;
 	}
 
 	delete avl;
@@ -40,6 +60,8 @@ int main() {
 bool Choice(int& choice) {
 	cout << "1. 단어 검색\n";
 	cout << "2. 단어 추가\n";
+	cout << "3. 단어 삭제\n";
+	cout << "4. 전체 출력\n";
 	cout << "0. 종료\n" << endl;
 
 	cout << "선택. ";

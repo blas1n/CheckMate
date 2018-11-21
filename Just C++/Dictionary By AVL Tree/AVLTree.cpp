@@ -1,19 +1,7 @@
 #include "AVLTree.h"
 #include <iostream>
 
-AVLTree::~AVLTree() {
-  	delete m_root;
-	m_root = nullptr;
-}
-
 AVLNode* AVLTree::Insert(AVLNode* root, const string& key, const string& value) {
-	static bool bFirst = true;
-
-	if (bFirst) {
-		m_root = root;
-		bFirst = false;
-	}
-
 	if (!root) {
 		root = new AVLNode();
 		
@@ -25,8 +13,10 @@ AVLNode* AVLTree::Insert(AVLNode* root, const string& key, const string& value) 
 		return root;
 	}
 
-	if (root->key == key)
+	if (root->key == key) {
+		std::cout << "존재하는 단어입니다." << std::endl;
 		return root;
+	}
 
 	else if (root->key > key) {
 		root->left = Insert(root->left, key, value);
@@ -55,6 +45,55 @@ AVLNode* AVLTree::Search(AVLNode* root, const string& key) {
 		return Search(root->right, key);
 }
 
+AVLNode* AVLTree::Delete(AVLNode*& root, const string& key) {
+	if (!root)
+		return nullptr;
+
+	if (root->key == key) {
+		AVLNode* reValue = new AVLNode(*root);
+		AVLNode* temp = nullptr;
+
+		if (root->left && !root->right)
+			temp = new AVLNode(*(root->left));
+
+		else if (root->right && !root->left)
+			temp = new AVLNode(*(root->right));
+
+		else if (root->left && root->right) {
+			AVLNode* iter = root->right;
+
+			while (iter->left) iter = iter->left;
+
+			iter->left = root->left;
+
+			temp = new AVLNode(*(root->right));
+		}
+
+		root->left = root->right = nullptr;
+
+		delete root;
+		root = temp;
+
+		if (root) Balance(root);
+
+		return reValue;
+	}
+		
+	else if (root->key > key)
+		return Delete(root->left, key);
+
+	else
+		return Delete(root->right, key);
+}
+
+void AVLTree::Inorder(AVLNode* root) {
+	if (!root) return;
+
+	Inorder(root->left);
+	std::cout << root << std::endl;
+	Inorder(root->right);
+}
+
 int AVLTree::Height(AVLNode* temp) {
 	int h = 0;
 
@@ -69,6 +108,8 @@ int AVLTree::Height(AVLNode* temp) {
 }
 
 int AVLTree::Diff(AVLNode* temp) {
+	if (!temp) return 0;
+
 	int left = Height(temp->left);
 	int right = Height(temp->right);
 
