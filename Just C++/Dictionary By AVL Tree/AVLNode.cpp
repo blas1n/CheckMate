@@ -8,11 +8,15 @@ AVLNode::AVLNode()
 {}
 
 AVLNode::~AVLNode() {
-	delete left;
-	left = nullptr;
+	if (left) {
+		delete left;
+		left = nullptr;
+	}
 
-	delete right;
-	right = nullptr;
+	if (right) {
+		delete right;
+		right = nullptr;
+	}
 }
 
 std::ostream& operator<<(std::ostream& os, AVLNode* node) {
