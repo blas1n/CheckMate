@@ -65,7 +65,7 @@ bool Choice(int& choice) {
 	cout << "0. 종료\n" << endl;
 
 	cout << "선택. ";
-	cin >> choice;
+	std::cin >> choice;
 	cout << endl;
 
 	return choice != 0;
@@ -74,11 +74,11 @@ bool Choice(int& choice) {
 void Input(string* key, string* value) {
 	if (key) {
 		cout << "단어를 입력하세요. ";
-		cin >> (*key);
+		std::cin >> (*key);
 	}
 
 	if (value) {
 		cout << "뜻을 입력하세요. ";
-		cin >> (*value);
+		std::cin >> (*value);
 	}
 }
