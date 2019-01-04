@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{392fe189-20f4-46b7-a554-f334de067050}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\EntryPoint">
+      <UniqueIdentifier>{882af268-d073-42e3-a485-2ce5ffa2656c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Director">
+      <UniqueIdentifier>{32ffdc55-5625-45f4-b0ca-59b4d47e0fb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Setting">
+      <UniqueIdentifier>{47a43d55-3126-4fe4-864b-c20dbb273fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Time">
+      <UniqueIdentifier>{2ade1142-8e1d-4e63-96c9-803726f8108f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Scene">
+      <UniqueIdentifier>{0f21f6a3-38b8-4da3-ae39-5dad4287f8a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Scene\Abstract Scene">
+      <UniqueIdentifier>{bceb8dbd-0584-4b27-85b3-727fbe9ce34f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Scene\SceneManager">
+      <UniqueIdentifier>{276dc578-df80-4e26-8b82-be7d97c08f4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Sprite">
+      <UniqueIdentifier>{b3f6ce63-58ea-4553-b7e2-8bc774daa5a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Setting\SettingValue">
+      <UniqueIdentifier>{2a650f6d-5b38-4207-beb2-356312473dfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{170dcd2b-3955-424b-95c1-31c3233e60ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{e54d87d9-38a1-415a-b17e-5bb43128e3c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene">
+      <UniqueIdentifier>{cc326f50-e7d8-464b-9ee3-ebe8cdbda35a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Framework\EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowWrapper.cpp">
+      <Filter>Framework\Director</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDirector.cpp">
+      <Filter>Framework\Director</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Framework\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Framework\Scene\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Framework\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingValue.cpp">
+      <Filter>Setting\SettingValue</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowWrapper.h">
+      <Filter>Framework\Director</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDirector.h">
+      <Filter>Framework\Director</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Framework\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="IScene.h">
+      <Filter>Framework\Scene\Abstract Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Framework\Scene\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Framework\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingValue.h">
+      <Filter>Setting\SettingValue</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Set.hpp">
+      <Filter>Setting</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CheckMate.rc">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Player.png">
+      <Filter>Resource</Filter>
+    </Image>
+    <Image Include="Logo.ico">
+      <Filter>Resource</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
