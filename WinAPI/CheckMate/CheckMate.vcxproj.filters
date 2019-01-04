@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Framework">
       <UniqueIdentifier>{392fe189-20f4-46b7-a554-f334de067050}</UniqueIdentifier>
     </Filter>
@@ -27,9 +19,6 @@
     <Filter Include="Framework\Scene">
       <UniqueIdentifier>{0f21f6a3-38b8-4da3-ae39-5dad4287f8a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Scene\Abstract Scene">
-      <UniqueIdentifier>{bceb8dbd-0584-4b27-85b3-727fbe9ce34f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Scene\SceneManager">
       <UniqueIdentifier>{276dc578-df80-4e26-8b82-be7d97c08f4f}</UniqueIdentifier>
     </Filter>
@@ -47,6 +36,30 @@
     </Filter>
     <Filter Include="Game\Scene">
       <UniqueIdentifier>{cc326f50-e7d8-464b-9ee3-ebe8cdbda35a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{9e14cb4b-ad67-4700-a962-964630a741ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Object">
+      <UniqueIdentifier>{98aa1d1c-3274-4079-947c-83a83b6da6f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Component">
+      <UniqueIdentifier>{ba5571d6-891b-40c8-8ac2-ee2ccf04bf6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Component\Interface">
+      <UniqueIdentifier>{dbc8cd48-6b1e-484d-a0bf-b4d04958fc1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Object\Objects">
+      <UniqueIdentifier>{21a687ae-4443-4a62-a231-6bf38b7d277f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Component\Components">
+      <UniqueIdentifier>{41599dda-8fee-4499-94e0-619ff1c13d9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Scene\BaseClass">
+      <UniqueIdentifier>{bceb8dbd-0584-4b27-85b3-727fbe9ce34f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Object\BaseClass">
+      <UniqueIdentifier>{f5f09e32-02b7-470b-b3b2-05ac77df7e22}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -71,14 +84,17 @@
     <ClCompile Include="SettingValue.cpp">
       <Filter>Setting\SettingValue</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>Game\Scene</Filter>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Framework\Scene\BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Game\Object\BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Game\Component\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="WindowWrapper.h">
       <Filter>Framework\Director</Filter>
     </ClInclude>
@@ -87,9 +103,6 @@
     </ClInclude>
     <ClInclude Include="Time.h">
       <Filter>Framework\Time</Filter>
-    </ClInclude>
-    <ClInclude Include="IScene.h">
-      <Filter>Framework\Scene\Abstract Scene</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Framework\Scene\SceneManager</Filter>
@@ -100,14 +113,32 @@
     <ClInclude Include="SettingValue.h">
       <Filter>Setting\SettingValue</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>Game\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Set.hpp">
       <Filter>Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="IComponent.h">
+      <Filter>Game\Component\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Game\Object\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Framework\Scene\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.hpp">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Game\Object\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Game\Component\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

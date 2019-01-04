@@ -18,7 +18,7 @@ public:
 	~Sprite() = default;
 
 public:
-	void Draw(Graphics&, int, int) const;
+	void Draw(int, int) const;
 
 public:
 	bool LoadSprite(const LPWSTR name);

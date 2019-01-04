@@ -143,16 +143,22 @@
   <ItemGroup>
     <ClCompile Include="GameDirector.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SettingValue.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Time.cpp" />
-    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="WindowWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameDirector.h" />
-    <ClInclude Include="IScene.h" />
+    <ClInclude Include="IComponent.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Set.hpp" />
@@ -160,7 +166,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SettingValue.h" />
     <ClInclude Include="Time.h" />
-    <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="TitleScene.hpp" />
     <ClInclude Include="WindowWrapper.h" />
   </ItemGroup>
   <ItemGroup>

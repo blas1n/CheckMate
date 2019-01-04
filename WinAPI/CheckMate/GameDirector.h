@@ -7,6 +7,7 @@ class SceneManager;
 class GameDirector : public WindowWrapper {
 private:
 	SceneManager* m_sceneManager;
+	Graphics* m_graphics;
 
 private:
 	GameDirector();
@@ -15,12 +16,9 @@ private:
 public:
 	static GameDirector* GetGameDirector();
 	SceneManager* GetSceneManager() const noexcept;
+	Graphics* GetGraphics() const noexcept;
 
 public:
 	virtual void Process() override;
-
-private:
-	void Update();
-	void Render();
 };
 

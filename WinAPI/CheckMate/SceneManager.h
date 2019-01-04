@@ -7,25 +7,24 @@
 using std::string;
 using std::map;
 
-class IScene;
+class Scene;
 
 class SceneManager {
 private:
-	map<string, IScene*> m_sceneContainer;
+	map<string, Scene*> m_sceneContainer;
 	
-	IScene* m_reservedScene;
-	IScene* m_currentScene;
+	Scene* m_reservedScene;
+	Scene* m_currentScene;
 
 public:
 	SceneManager();
 	~SceneManager();
 
 public:
-	void RegisterScene(const string& sceneName, IScene* scene);
+	void RegisterScene(const string& sceneName, Scene* scene);
 	void ReserveChangeScene(const string& sceneName);
 
 public:
 	void Update();
-	void Render(Graphics& graphics);
 };
 

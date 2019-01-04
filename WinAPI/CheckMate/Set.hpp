@@ -3,7 +3,7 @@
 #include "SettingValue.h"
 #include "Sprite.h"
 #include "resource.h"
-#include "TitleScene.h"
+#include "TitleScene.hpp"
 
 void SettingWindow(SettingValue& value) {
 	value.lpszClassName = value.lpszMenuName = TEXT("CheckMate");

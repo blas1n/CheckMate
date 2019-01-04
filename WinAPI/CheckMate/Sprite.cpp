@@ -14,8 +14,8 @@ Sprite::Sprite(const Sprite& other) : Sprite() {
 	LoadSprite(other.GetName());
 }
 
-void Sprite::Draw(Graphics& graphics, int x, int y) const {
-	graphics.DrawImage(m_pBitmap, x, y);
+void Sprite::Draw(int x, int y) const {
+	GameDirector::GetGameDirector()->GetGraphics()->DrawImage(m_pBitmap, x, y);
 }
 
 bool Sprite::LoadSprite(const LPWSTR name) {

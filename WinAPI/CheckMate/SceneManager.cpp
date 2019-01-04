@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "SceneManager.h"
-#include "IScene.h"
+#include "Scene.h"
 
 SceneManager::SceneManager()
 	: m_currentScene(nullptr),
@@ -10,11 +10,11 @@ SceneManager::SceneManager()
 SceneManager::~SceneManager() {
 	for (auto& iter : m_sceneContainer) {
 		iter.second->Destroy();
-		Destroy(iter.second);
+		Erase(iter.second);
 	}
 }
 
-void SceneManager::RegisterScene(const string& sceneName, IScene* scene) {
+void SceneManager::RegisterScene(const string& sceneName, Scene* scene) {
 	if (!scene || !sceneName.compare(""))
 		return;
 
@@ -43,9 +43,4 @@ void SceneManager::Update() {
 
 	if (m_currentScene)
 		m_currentScene->Update();
-}
-
-void SceneManager::Render(Graphics& graphics) {
-	if (m_currentScene)
-		m_currentScene->Render(graphics);
 }

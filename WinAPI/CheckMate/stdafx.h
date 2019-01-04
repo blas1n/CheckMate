@@ -18,7 +18,9 @@
 using namespace Gdiplus;
 
 template <class T>
-inline void Destroy(T*& ptr) noexcept {
+inline void Erase(T*& ptr) noexcept {
+	if (!ptr) return;
+
 	delete ptr;
 	ptr = nullptr;
 }
