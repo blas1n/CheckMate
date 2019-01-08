@@ -4,7 +4,7 @@ class Object;
 
 class IComponent {
 private:
-	Object* m_pEntity;
+	const Object* m_pEntity;
 
 protected:
 	const Object& GetEntity() const noexcept {
@@ -12,7 +12,7 @@ protected:
 	}
 
 public:
-	IComponent(Object* entity)
+	IComponent(const Object* entity)
 		: m_pEntity(entity) {}
 
 	virtual ~IComponent() = default;

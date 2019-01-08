@@ -90,6 +90,9 @@
     <ClCompile Include="Object.cpp">
       <Filter>Framework\Object</Filter>
     </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Game\Component\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WindowWrapper.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Framework\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Game\Component\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

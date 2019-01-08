@@ -151,6 +151,7 @@
     <ClCompile Include="SettingValue.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="WindowWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +168,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SettingValue.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="Transform.h" />
     <ClInclude Include="WindowWrapper.h" />
   </ItemGroup>
   <ItemGroup>

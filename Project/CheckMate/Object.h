@@ -4,6 +4,7 @@
 #include <string>
 #include <memory>
 #include "IComponent.h"
+#include "Point.h"
 
 class Object {
 private:
@@ -13,7 +14,7 @@ private:
 	ComponentList m_components;
 
 public:
-	Object(std::string);
+	Object(std::string, const Utility::Point = Utility::Point());
 	virtual ~Object() = default;
 
 public:

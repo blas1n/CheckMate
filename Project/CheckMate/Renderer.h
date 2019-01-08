@@ -8,7 +8,7 @@ private:
 	Sprite* m_sprite;
 
 public:
-	Renderer(Object* entity);
+	Renderer(Object*);
 
 public:
 	virtual void Init() override;
@@ -17,6 +17,6 @@ public:
 
 public:
 	const Sprite& GetSprite() const noexcept;
-	bool SetSprite(LPWSTR id) noexcept;
+	bool SetSprite(LPWSTR) noexcept;
 };
 

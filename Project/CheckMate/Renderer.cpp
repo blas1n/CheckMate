@@ -1,4 +1,6 @@
 #include "Renderer.h"
+#include "Transform.h"
+#include "Object.h"
 
 Renderer::Renderer(Object* entity)
 	: IComponent(entity),
@@ -7,7 +9,8 @@ Renderer::Renderer(Object* entity)
 void Renderer::Init() {}
 
 void Renderer::Update() {
-	m_sprite->Draw(0, 0);
+	auto pos = GetEntity().GetComponent<Transform>().GetPos();
+	m_sprite->Draw(pos.GetX(), pos.GetY());
 }
 
 void Renderer::Clear() {}

@@ -1,9 +1,13 @@
 #include "stdafx.h"
 #include "Object.h"
+#include "Transform.h"
 
-Object::Object(std::string name)
+Object::Object(std::string name, const Utility::Point pos)
 	: m_name(name),
-	m_components() {}
+	m_components() {
+
+	AddComponent<Transform>().SetPos(pos);
+}
 
 void Object::Init() {
 	for (auto iter : m_components)

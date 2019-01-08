@@ -25,7 +25,7 @@ Object& Scene::FindObject(const std::string& name) const {
 	throw;
 }
 
-Object& Scene::AddObject(const std::string& name) {
-	m_objects.emplace_back(Object(name));
+Object& Scene::AddObject(const std::string& name, const Utility::Point pos) {
+	m_objects.emplace_back(Object(name, pos));
 	return m_objects.back();
 }
