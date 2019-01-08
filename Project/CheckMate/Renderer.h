@@ -5,14 +5,18 @@
 
 class Renderer : public IComponent {
 private:
-	Sprite* sprite;
+	Sprite* m_sprite;
 
 public:
-	Renderer(Object* entity) : IComponent(entity) {}
+	Renderer(Object* entity);
 
 public:
 	virtual void Init() override;
 	virtual void Update() override;
 	virtual void Clear() override;
+
+public:
+	const Sprite& GetSprite() const noexcept;
+	bool SetSprite(LPWSTR id) noexcept;
 };
 

@@ -1,14 +1,21 @@
 #include "Renderer.h"
-#include "resource.h"
 
-void Renderer::Init() {
-	sprite = new Sprite(MAKEINTRESOURCE(IDB_PNG1));
-}
+Renderer::Renderer(Object* entity)
+	: IComponent(entity),
+	m_sprite(new Sprite()) {}
+
+void Renderer::Init() {}
 
 void Renderer::Update() {
-	sprite->Draw(0, 0);
+	m_sprite->Draw(0, 0);
 }
 
-void Renderer::Clear() {
+void Renderer::Clear() {}
 
+const Sprite& Renderer::GetSprite() const noexcept {
+	return *m_sprite;
+}
+
+bool Renderer::SetSprite(LPWSTR id) noexcept {
+	return m_sprite->LoadSprite(id);
 }

@@ -22,5 +22,5 @@ void SettingGame() {
 	sceneManager.ReserveChangeScene("Title");
 
 	auto& player = sceneManager.GetScene("Title").AddObject("Player");
-	player.AddComponent<Renderer>();
+	player.AddComponent<Renderer>().SetSprite(MAKEINTRESOURCE(IDB_PNG1));
 }
