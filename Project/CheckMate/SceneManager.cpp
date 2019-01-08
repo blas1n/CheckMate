@@ -15,6 +15,18 @@ void SceneManager::ReserveChangeScene(const string& sceneName) {
 	else throw;
 }
 
+Scene& SceneManager::GetScene(const string& sceneName) {
+	if (sceneName == "")
+		return *m_currentScene;
+
+	auto iter = m_sceneContainer.find(sceneName);
+
+	if (iter == m_sceneContainer.end())
+		throw;
+
+	return *(iter->second);
+}
+
 void SceneManager::Update() {
 	if (m_reservedScene) {
 		if (m_currentScene)

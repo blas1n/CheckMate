@@ -11,7 +11,6 @@ private:
 	ObjectList m_objects;
 
 public:
-	Scene(std::initializer_list<Object>);
 	virtual ~Scene() = default;
 
 private:
@@ -20,4 +19,8 @@ private:
 	void Init();
 	void Update();
 	void Clear();
+
+public:
+	Object& FindObject(const std::string& name) const;
+	Object& AddObject(const std::string& name);
 };

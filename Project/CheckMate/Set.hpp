@@ -16,11 +16,10 @@ void SettingWindow(SettingValue& value) {
 }
 
 void SettingGame() {
-	auto objList = { Object("Player") };
-	const_cast<Object*>(objList.begin())->AddComponent<Renderer>();
-
 	auto& sceneManager = GameDirector::GetGameDirector()->GetSceneManager();
 
-	sceneManager.RegisterScene("Title", std::make_shared<Scene>(objList));
+	sceneManager.RegisterScene("Title", std::make_shared<Scene>());
 	sceneManager.ReserveChangeScene("Title");
+
+	sceneManager.GetScene("Title").AddObject("Player").AddComponent<Renderer>();
 }

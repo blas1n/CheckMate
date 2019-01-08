@@ -1,9 +1,6 @@
 #include "Scene.h"
 #include <algorithm>
 
-Scene::Scene(std::initializer_list<Object> objList)
-	: m_objects(objList) {}
-
 void Scene::Init() {
 	for (auto iter : m_objects)
 		iter.Init();
@@ -17,4 +14,18 @@ void Scene::Update() {
 void Scene::Clear() {
 	for (auto iter : m_objects)
 		iter.Clear();
+}
+
+Object& Scene::FindObject(const std::string& name) const {
+	for (auto& iter : m_objects) {
+		if (iter.GetName().compare(name))
+			return const_cast<Object&>(iter);
+	}
+
+	throw;
+}
+
+Object& Scene::AddObject(const std::string& name) {
+	m_objects.emplace_back(Object(name));
+	return m_objects.back();
 }

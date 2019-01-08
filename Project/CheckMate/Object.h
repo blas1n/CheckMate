@@ -25,7 +25,7 @@ public:
 	const std::string& GetName() const noexcept;
 
 	template <class ComponentType>
-	ComponentType GetComponent() {
+	ComponentType& GetComponent() const {
 		auto iter = m_components.begin();
 
 		for (; iter != m_components.end(); iter++)
@@ -38,7 +38,7 @@ public:
 	}
 
 	template <class ComponentType>
-	ComponentType AddComponent() {
+	ComponentType& AddComponent() {
 		auto component = std::make_shared<ComponentType>();
 		m_components.emplace_back(static_cast<std::shared_ptr<IComponent>>(component));
 		return *component;
