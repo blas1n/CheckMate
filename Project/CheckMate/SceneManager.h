@@ -18,7 +18,7 @@ private:
 	PScene m_currentScene;
 
 public:
-	void RegisterScene(const string& sceneName, PScene&& pScene) noexcept;
+	void RegisterScene(const string& sceneName) noexcept;
 	void ReserveChangeScene(const string& sceneName);
 	Scene& GetScene(const string& sceneName = "");
 

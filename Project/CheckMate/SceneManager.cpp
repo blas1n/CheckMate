@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "SceneManager.h"
 
-void SceneManager::RegisterScene(const string& sceneName, PScene&& pScene) noexcept {
+void SceneManager::RegisterScene(const string& sceneName) noexcept {
 	if (sceneName.compare("") && m_sceneContainer.find(sceneName) == m_sceneContainer.end())
-		m_sceneContainer.emplace(std::make_pair(sceneName, pScene));
+		m_sceneContainer.emplace(std::make_pair(sceneName, std::make_shared<Scene>()));
 }
 
 void SceneManager::ReserveChangeScene(const string& sceneName) {

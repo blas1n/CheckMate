@@ -19,7 +19,11 @@ void SettingWindow(SettingValue& value) {
 void SettingGame() {
 	auto& sceneManager = GameDirector::GetGameDirector()->GetSceneManager();
 
-	sceneManager.RegisterScene("Title", std::make_shared<Scene>());
+	sceneManager.RegisterScene("Title");
+	sceneManager.RegisterScene("Home");
+	sceneManager.RegisterScene("Stage");
+	sceneManager.RegisterScene("Ending");
+
 	sceneManager.ReserveChangeScene("Title");
 
 	auto& player = sceneManager.GetScene("Title").AddObject("Player", Utility::Point(500, 40));

@@ -46,9 +46,6 @@
     <Filter Include="Game\Component\Components">
       <UniqueIdentifier>{41599dda-8fee-4499-94e0-619ff1c13d9a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Scene\BaseClass">
-      <UniqueIdentifier>{bceb8dbd-0584-4b27-85b3-727fbe9ce34f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Utility">
       <UniqueIdentifier>{28695e42-ad07-4bab-8cbd-18440c9eefed}</UniqueIdentifier>
     </Filter>
@@ -73,6 +70,9 @@
     <Filter Include="Game\Component\Components\Player">
       <UniqueIdentifier>{9e9a050f-1fcd-4d7e-aa4c-a3ead15cf359}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Scene\Scene">
+      <UniqueIdentifier>{bceb8dbd-0584-4b27-85b3-727fbe9ce34f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -91,7 +91,7 @@
       <Filter>Setting\SettingValue</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Framework\Scene\BaseClass</Filter>
+      <Filter>Framework\Scene\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>Framework\Utility</Filter>
@@ -144,7 +144,7 @@
       <Filter>Game\Component\Interface</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Framework\Scene\BaseClass</Filter>
+      <Filter>Framework\Scene\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>Framework\Utility</Filter>
