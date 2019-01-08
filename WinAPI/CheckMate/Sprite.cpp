@@ -1,11 +1,6 @@
 #include "stdafx.h"
 #include "Sprite.h"
 
-Sprite::Sprite()
-	: m_pBitmap(nullptr),
-	m_name(0),
-	m_size(0) {}
-
 Sprite::Sprite(const LPWSTR name) : Sprite() {
 	LoadSprite(name);
 }
@@ -15,7 +10,7 @@ Sprite::Sprite(const Sprite& other) : Sprite() {
 }
 
 void Sprite::Draw(int x, int y) const {
-	GameDirector::GetGameDirector()->GetGraphics()->DrawImage(m_pBitmap, x, y);
+	GameDirector::GetGameDirector()->GetGraphics().DrawImage(m_pBitmap, x, y);
 }
 
 bool Sprite::LoadSprite(const LPWSTR name) {

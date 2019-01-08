@@ -1,29 +1,23 @@
 #pragma once
 
 #include "stdafx.h"
-#include <list>
 #include "Object.h"
+#include <string>
+#include <list>
 
 class Scene {
-protected:
-	using ObjectList = std::list<Object*>;
-
 private:
-	ObjectList* m_objects;
+	using ObjectList = std::list<Object>;
+	ObjectList m_objects;
 
 public:
-	Scene() = default;
+	Scene(std::initializer_list<Object>);
 	virtual ~Scene() = default;
 
 private:
 	friend class SceneManager;
 
-	void Create();
 	void Init();
 	void Update();
 	void Clear();
-	void Destroy();
-
-protected:
-	virtual void InitObjects(ObjectList*&) = 0;
 };

@@ -1,30 +1,20 @@
 #include "Scene.h"
+#include <algorithm>
 
-void Scene::Create() {
-	InitObjects(m_objects);
-
-	for (auto iter : *m_objects)
-		iter->Create();
-}
+Scene::Scene(std::initializer_list<Object> objList)
+	: m_objects(objList) {}
 
 void Scene::Init() {
-	for (auto iter : *m_objects)
-		iter->Init();
+	for (auto iter : m_objects)
+		iter.Init();
 }
 
 void Scene::Update() {
-	for (auto iter : *m_objects)
-		iter->Update();
+	for (auto iter : m_objects)
+		iter.Update();
 }
 
 void Scene::Clear() {
-	for (auto iter : *m_objects)
-		iter->Clear();
-}
-
-void Scene::Destroy() {
-	for (auto iter : *m_objects)
-		iter->Destroy();
-
-	Erase(m_objects);
+	for (auto iter : m_objects)
+		iter.Clear();
 }

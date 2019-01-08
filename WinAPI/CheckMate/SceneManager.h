@@ -1,27 +1,24 @@
 #pragma once
 
 #include "stdafx.h"
+#include "Scene.h"
+#include <memory>
 #include <string>
 #include <map>
 
 using std::string;
-using std::map;
-
-class Scene;
 
 class SceneManager {
 private:
-	map<string, Scene*> m_sceneContainer;
+	using PScene = std::shared_ptr<Scene>;
+
+	std::map<string, PScene> m_sceneContainer;
 	
-	Scene* m_reservedScene;
-	Scene* m_currentScene;
+	PScene m_reservedScene;
+	PScene m_currentScene;
 
 public:
-	SceneManager();
-	~SceneManager();
-
-public:
-	void RegisterScene(const string& sceneName, Scene* scene);
+	void RegisterScene(const string& sceneName, PScene&& pScene) noexcept;
 	void ReserveChangeScene(const string& sceneName);
 
 public:

@@ -34,14 +34,8 @@
     <Filter Include="Game">
       <UniqueIdentifier>{e54d87d9-38a1-415a-b17e-5bb43128e3c4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Scene">
-      <UniqueIdentifier>{cc326f50-e7d8-464b-9ee3-ebe8cdbda35a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header">
       <UniqueIdentifier>{9e14cb4b-ad67-4700-a962-964630a741ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Object">
-      <UniqueIdentifier>{98aa1d1c-3274-4079-947c-83a83b6da6f3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\Component">
       <UniqueIdentifier>{ba5571d6-891b-40c8-8ac2-ee2ccf04bf6c}</UniqueIdentifier>
@@ -49,20 +43,17 @@
     <Filter Include="Game\Component\Interface">
       <UniqueIdentifier>{dbc8cd48-6b1e-484d-a0bf-b4d04958fc1f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Object\Objects">
-      <UniqueIdentifier>{21a687ae-4443-4a62-a231-6bf38b7d277f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Component\Components">
       <UniqueIdentifier>{41599dda-8fee-4499-94e0-619ff1c13d9a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Framework\Scene\BaseClass">
       <UniqueIdentifier>{bceb8dbd-0584-4b27-85b3-727fbe9ce34f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Object\BaseClass">
-      <UniqueIdentifier>{f5f09e32-02b7-470b-b3b2-05ac77df7e22}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Utility">
       <UniqueIdentifier>{28695e42-ad07-4bab-8cbd-18440c9eefed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Object">
+      <UniqueIdentifier>{98aa1d1c-3274-4079-947c-83a83b6da6f3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,14 +81,14 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Framework\Scene\BaseClass</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Game\Object\BaseClass</Filter>
-    </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Game\Component\Components</Filter>
     </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>Framework\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Framework\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -131,23 +122,17 @@
     <ClInclude Include="IComponent.h">
       <Filter>Game\Component\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Game\Object\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Framework\Scene\BaseClass</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleScene.hpp">
-      <Filter>Game\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Game\Object\BaseClass</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Game\Component\Components</Filter>
     </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>Framework\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Framework\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

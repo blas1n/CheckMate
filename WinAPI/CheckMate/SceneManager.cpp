@@ -1,25 +1,9 @@
 #include "stdafx.h"
 #include "SceneManager.h"
-#include "Scene.h"
 
-SceneManager::SceneManager()
-	: m_currentScene(nullptr),
-	m_reservedScene(nullptr)
-{}
-
-SceneManager::~SceneManager() {
-	for (auto& iter : m_sceneContainer) {
-		iter.second->Destroy();
-		Erase(iter.second);
-	}
-}
-
-void SceneManager::RegisterScene(const string& sceneName, Scene* scene) {
-	if (!scene || !sceneName.compare(""))
-		return;
-
-	scene->Create();
-	m_sceneContainer.emplace(std::make_pair(sceneName, scene));
+void SceneManager::RegisterScene(const string& sceneName, PScene&& pScene) noexcept {
+	if (sceneName.compare("") && m_sceneContainer.find(sceneName) == m_sceneContainer.end())
+		m_sceneContainer.emplace(std::make_pair(sceneName, pScene));
 }
 
 void SceneManager::ReserveChangeScene(const string& sceneName) {
@@ -28,7 +12,7 @@ void SceneManager::ReserveChangeScene(const string& sceneName) {
 	if (iter != m_sceneContainer.end())
 		m_reservedScene = iter->second;
 
-	else m_reservedScene = nullptr;
+	else throw;
 }
 
 void SceneManager::Update() {
@@ -37,8 +21,7 @@ void SceneManager::Update() {
 			m_currentScene->Clear();
 
 		m_reservedScene->Init();
-		m_currentScene = m_reservedScene;
-		m_reservedScene = nullptr;
+		m_currentScene = std::move(m_reservedScene);
 	}
 
 	if (m_currentScene)

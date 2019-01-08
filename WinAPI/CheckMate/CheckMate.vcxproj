@@ -160,7 +160,6 @@
     <ClInclude Include="Point.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Set.hpp" />
@@ -168,7 +167,6 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SettingValue.h" />
     <ClInclude Include="Time.h" />
-    <ClInclude Include="TitleScene.hpp" />
     <ClInclude Include="WindowWrapper.h" />
   </ItemGroup>
   <ItemGroup>

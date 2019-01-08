@@ -12,10 +12,9 @@ private:
 	Color m_color;
 
 public:
-	Sprite();
+	Sprite() = default;
 	Sprite(const LPWSTR);
 	Sprite(const Sprite&);
-	~Sprite() = default;
 
 public:
 	void Draw(int, int) const;

@@ -1,9 +1,11 @@
 #include "GameDirector.h"
 #include "SceneManager.h"
 #include "SettingValue.h"
+#include "Object.h"
 #include "Sprite.h"
 #include "resource.h"
-#include "TitleScene.hpp"
+#include "Renderer.h"
+#include <memory>
 
 void SettingWindow(SettingValue& value) {
 	value.lpszClassName = value.lpszMenuName = TEXT("CheckMate");
@@ -14,8 +16,11 @@ void SettingWindow(SettingValue& value) {
 }
 
 void SettingGame() {
-	auto* sceneManager = GameDirector::GetGameDirector()->GetSceneManager();
+	auto objList = { Object(std::string("Player")) };
+	const_cast<Object*>(objList.begin())->AddComponent<Renderer>();
 
-	sceneManager->RegisterScene("Title", new TitleScene());
-	sceneManager->ReserveChangeScene("Title");
+	auto& sceneManager = GameDirector::GetGameDirector()->GetSceneManager();
+
+	sceneManager.RegisterScene("Title", std::make_shared<Scene>(objList));
+	sceneManager.ReserveChangeScene("Title");
 }
