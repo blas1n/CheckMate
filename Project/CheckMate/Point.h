@@ -4,27 +4,27 @@ namespace Utility {
 
 	struct Point {
 	private:
-		int m_x, m_y;
+		float m_x, m_y;
 
 	public:
 		Point() = default;
 		~Point() = default;
 
-		Point(const int, const int);
+		Point(const float, const float);
 		Point(const Point&);
 
 	public:
-		int GetX() const noexcept;
-		void SetX(int) noexcept;
+		float GetX() const noexcept;
+		void SetX(float) noexcept;
 
-		int GetY() const noexcept;
-		void SetY(int) noexcept;
+		float GetY() const noexcept;
+		void SetY(float) noexcept;
 	};
 
 	Point operator+(const Point&, const Point&);
 	Point operator-(const Point&, const Point&);
 	Point operator*(const Point&, const Point&);
 	Point operator/(const Point&, const Point&);
-	Point operator*(const Point&, const int&);
-	Point operator/(const Point&, const int&);
+	Point operator*(const Point&, const float&);
+	Point operator/(const Point&, const float&);
 }

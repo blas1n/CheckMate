@@ -17,7 +17,7 @@ public:
 	Sprite(const Sprite&);
 
 public:
-	void Draw(int, int) const;
+	void Draw(float, float) const;
 
 public:
 	bool LoadSprite(const LPWSTR name);

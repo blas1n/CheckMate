@@ -4,12 +4,18 @@
 #include "Time.h"
 
 GameDirector::GameDirector()
-	: m_pSceneManager(std::make_unique<SceneManager>()),
-	m_pGraphics(nullptr) {}
+	: m_pInputManager(std::make_unique<InputManager>()),
+	m_pSceneManager(std::make_unique<SceneManager>()),
+	m_pGraphics(nullptr),
+	m_frameInterval(10) {}
 
 GameDirector* GameDirector::GetGameDirector() {
 	static GameDirector director;
 	return &director;
+}
+
+const InputManager& GameDirector::GetInputManager() const noexcept {
+	return *m_pInputManager;
 }
 
 SceneManager& GameDirector::GetSceneManager() const noexcept {
@@ -20,10 +26,20 @@ Graphics& GameDirector::GetGraphics() const noexcept {
 	return *m_pGraphics;
 }
 
+DWORD GameDirector::GetFrameInterval() const noexcept {
+	return m_frameInterval;
+}
+
+void GameDirector::SetFrameInterval(DWORD frameInterval) noexcept {
+	m_frameInterval = frameInterval;
+}
+
 void GameDirector::Process() {
 	static auto prevFrameTime = static_cast<DWORD>(0);
 
-	Time::GetTime()->SetDeltaTime(static_cast<float>(GetTickCount()) - static_cast<float>(prevFrameTime) * 0.001f);
+	if (GetTickCount() - prevFrameTime <= m_frameInterval) return;
+
+	Time::SetDeltaTime(static_cast<float>(GetTickCount() - prevFrameTime) * 0.001f);
 	
 	RECT wndRect;
 	GetClientRect(GetHWnd(), &wndRect);

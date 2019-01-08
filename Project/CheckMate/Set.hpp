@@ -5,6 +5,7 @@
 #include "Sprite.h"
 #include "resource.h"
 #include "Renderer.h"
+#include "Player.h"
 #include <memory>
 
 void SettingWindow(SettingValue& value) {
@@ -23,4 +24,5 @@ void SettingGame() {
 
 	auto& player = sceneManager.GetScene("Title").AddObject("Player", Utility::Point(500, 40));
 	player.AddComponent<Renderer>().SetSprite(MAKEINTRESOURCE(IDB_PNG1));
+	player.AddComponent<Player>();
 }

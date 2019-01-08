@@ -18,5 +18,5 @@ public:
 public:
 	const Utility::Point GetPos() const noexcept;
 	void SetPos(const Utility::Point) noexcept;
+	void SetPos(const float x, const float y) noexcept;
 };
-

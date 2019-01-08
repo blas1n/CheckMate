@@ -1,4 +1,5 @@
 #include "WindowWrapper.h"
+#include "InputManager.h"
 #include "SettingValue.h"
 #include "Set.hpp"
 
@@ -52,6 +53,10 @@ int WindowWrapper::Run(HINSTANCE hInstance) {
 
 LRESULT CALLBACK WindowWrapper::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	switch (msg) {
+	case WM_MOUSEMOVE:
+		InputManager::SetMousePos(Utility::Point(LOWORD(lParam), HIWORD(lParam)));
+		return 0;
+
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;

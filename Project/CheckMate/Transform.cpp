@@ -1,4 +1,5 @@
 #include "Transform.h"
+#include "GameDirector.h"
 
 Transform::Transform(const Object* entity, const Utility::Point pos)
 	: IComponent(entity),
@@ -16,4 +17,8 @@ const Utility::Point Transform::GetPos() const noexcept {
 
 void Transform::SetPos(const Utility::Point pos) noexcept {
 	m_pos = pos;
+}
+
+void Transform::SetPos(const float x, const float y) noexcept {
+	SetPos(Utility::Point(x, y));
 }

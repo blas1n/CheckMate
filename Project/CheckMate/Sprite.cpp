@@ -9,7 +9,7 @@ Sprite::Sprite(const Sprite& other) : Sprite() {
 	LoadSprite(other.GetName());
 }
 
-void Sprite::Draw(int x, int y) const {
+void Sprite::Draw(float x, float y) const {
 	GameDirector::GetGameDirector()->GetGraphics().DrawImage(m_pBitmap, x, y);
 }
 

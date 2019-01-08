@@ -1,14 +1,11 @@
 #include "Time.h"
 
-Time* Time::GetTime() {
-	static Time time;
-	return &time;
+float Time::GetDeltaTime() {
+	return m_deltaTime;
 }
 
-float Time::GetDeltaTime() const noexcept {
-	return deltaTime;
+void Time::SetDeltaTime(float deltaTime){
+	m_deltaTime = deltaTime;
 }
 
-void Time::SetDeltaTime(float deltaTime) noexcept {
-	this->deltaTime = deltaTime;
-}
+float Time::m_deltaTime = 0.0f;

@@ -55,16 +55,28 @@
     <Filter Include="Framework\Object">
       <UniqueIdentifier>{98aa1d1c-3274-4079-947c-83a83b6da6f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Director\GameDirector">
+      <UniqueIdentifier>{83104548-dc48-4b80-b567-06aa28771550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Director\WindowWrapper">
+      <UniqueIdentifier>{99cc2b57-740e-4015-b2be-8b8f54369e92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Director\InputManager">
+      <UniqueIdentifier>{cdd44b9c-72d5-45fb-8a66-0b6f235d2eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Component\Components\Renderer">
+      <UniqueIdentifier>{de224b73-708a-482b-941a-3b9068710a4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Component\Components\Transform">
+      <UniqueIdentifier>{743376c1-4dd9-47ac-8d0a-c22f2cb4b48a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Component\Components\Player">
+      <UniqueIdentifier>{9e9a050f-1fcd-4d7e-aa4c-a3ead15cf359}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Framework\EntryPoint</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowWrapper.cpp">
-      <Filter>Framework\Director</Filter>
-    </ClCompile>
-    <ClCompile Include="GameDirector.cpp">
-      <Filter>Framework\Director</Filter>
     </ClCompile>
     <ClCompile Include="Time.cpp">
       <Filter>Framework\Time</Filter>
@@ -81,26 +93,32 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Framework\Scene\BaseClass</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Game\Component\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>Framework\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>Framework\Object</Filter>
     </ClCompile>
+    <ClCompile Include="GameDirector.cpp">
+      <Filter>Framework\Director\GameDirector</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowWrapper.cpp">
+      <Filter>Framework\Director\WindowWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Framework\Director\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Game\Component\Components\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="Transform.cpp">
-      <Filter>Game\Component\Components</Filter>
+      <Filter>Game\Component\Components\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Game\Component\Components\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="WindowWrapper.h">
-      <Filter>Framework\Director</Filter>
-    </ClInclude>
-    <ClInclude Include="GameDirector.h">
-      <Filter>Framework\Director</Filter>
-    </ClInclude>
     <ClInclude Include="Time.h">
       <Filter>Framework\Time</Filter>
     </ClInclude>
@@ -128,17 +146,29 @@
     <ClInclude Include="Scene.h">
       <Filter>Framework\Scene\BaseClass</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Game\Component\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Framework\Object</Filter>
     </ClInclude>
+    <ClInclude Include="GameDirector.h">
+      <Filter>Framework\Director\GameDirector</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowWrapper.h">
+      <Filter>Framework\Director\WindowWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Framework\Director\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Game\Component\Components\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="Transform.h">
-      <Filter>Game\Component\Components</Filter>
+      <Filter>Game\Component\Components\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Game\Component\Components\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
