@@ -16,7 +16,7 @@ void SettingWindow(SettingValue& value) {
 }
 
 void SettingGame() {
-	auto objList = { Object(std::string("Player")) };
+	auto objList = { Object("Player") };
 	const_cast<Object*>(objList.begin())->AddComponent<Renderer>();
 
 	auto& sceneManager = GameDirector::GetGameDirector()->GetSceneManager();
