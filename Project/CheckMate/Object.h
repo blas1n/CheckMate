@@ -26,21 +26,20 @@ public:
 
 	template <class ComponentType>
 	ComponentType& GetComponent() const {
-		auto iter = m_components.begin();
+		static_assert(std::is_base_of<IComponent, ComponentType>::value, "ComponentType is not Component");
 
-		for (; iter != m_components.end(); iter++)
-			if (dynamic_cast<ComponentType>(*iter)) break;
+		for (auto& iter : m_components)
+			if (dynamic_cast<ComponentType*>(iter.get()))
+				return *(static_cast<ComponentType*>(iter.get()));
 
-		if (iter != m_components.end())
-			throw;
-
-		return static_cast<ComponentType>(*iter);
+		throw;
 	}
 
 	template <class ComponentType>
 	ComponentType& AddComponent() {
-		auto component = std::make_shared<ComponentType>();
-		m_components.emplace_back(static_cast<std::shared_ptr<IComponent>>(component));
-		return *component;
+		static_assert(std::is_base_of<IComponent, ComponentType>::value, "ComponentType is not Component");
+
+		m_components.emplace_back(std::unique_ptr<ComponentType>(new ComponentType(this)));
+		return *(static_cast<ComponentType*>(m_components.back().get()));
 	}
 };

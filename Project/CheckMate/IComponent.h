@@ -12,7 +12,9 @@ protected:
 	}
 
 public:
-	IComponent() = default;
+	IComponent(Object* entity)
+		: m_pEntity(entity) {}
+
 	virtual ~IComponent() = default;
 
 public:

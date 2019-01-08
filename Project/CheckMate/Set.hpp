@@ -21,5 +21,6 @@ void SettingGame() {
 	sceneManager.RegisterScene("Title", std::make_shared<Scene>());
 	sceneManager.ReserveChangeScene("Title");
 
-	sceneManager.GetScene("Title").AddObject("Player").AddComponent<Renderer>();
+	auto& player = sceneManager.GetScene("Title").AddObject("Player");
+	player.AddComponent<Renderer>();
 }
