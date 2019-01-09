@@ -2,7 +2,7 @@
 #include "Object.h"
 #include "Transform.h"
 
-Object::Object(std::string name, const Utility::Point pos)
+Object::Object(std::string name, const Utility::Vector2 pos)
 	: m_name(name),
 	m_components() {
 

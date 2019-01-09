@@ -1,14 +1,14 @@
 #pragma once
 
 #include "IComponent.h"
-#include "Point.h"
+#include "Vector2.h"
 
 class Transform : public IComponent {
 private:
-	Utility::Point m_pos;
+	Utility::Vector2 m_pos;
 
 public:
-	Transform(const Object*, const Utility::Point = Utility::Point());
+	Transform(const Object*, const Utility::Vector2 = Utility::Vector2());
 
 public:
 	virtual void Init() override;
@@ -16,7 +16,7 @@ public:
 	virtual void Clear() override;
 
 public:
-	const Utility::Point GetPos() const noexcept;
-	void SetPos(const Utility::Point) noexcept;
+	const Utility::Vector2 GetPos() const noexcept;
+	void SetPos(const Utility::Vector2) noexcept;
 	void SetPos(const float x, const float y) noexcept;
 };

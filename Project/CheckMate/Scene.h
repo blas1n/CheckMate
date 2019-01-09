@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 #include "Object.h"
-#include "Point.h"
+#include "Vector2.h"
 #include <string>
 #include <list>
 
@@ -23,5 +23,5 @@ private:
 
 public:
 	Object& FindObject(const std::string& name) const;
-	Object& AddObject(const std::string& name, const Utility::Point = Utility::Point());
+	Object& AddObject(const std::string& name, const Utility::Vector2 = Utility::Vector2());
 };
