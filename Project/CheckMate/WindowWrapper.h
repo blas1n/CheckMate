@@ -22,6 +22,7 @@ private:
 
 private:
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+	LRESULT CALLBACK RealWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 protected:
 	virtual void Process() = 0;

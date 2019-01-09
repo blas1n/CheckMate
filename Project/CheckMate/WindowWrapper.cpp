@@ -23,6 +23,8 @@ void WindowWrapper::Init(HINSTANCE hInstance) {
 	RegisterWndClass(value);
 	CreateWnd(value);
 	ShowWnd(value);
+
+	SetWindowLongPtr(m_hWnd, GWLP_USERDATA, reinterpret_cast<LONG>(this));
 }
 
 void WindowWrapper::Release() noexcept {
@@ -52,9 +54,14 @@ int WindowWrapper::Run(HINSTANCE hInstance) {
 }
 
 LRESULT CALLBACK WindowWrapper::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+	auto self = reinterpret_cast<WindowWrapper*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
+	return (self) ? (self->RealWndProc(hWnd, msg, wParam, lParam)) : DefWindowProc(hWnd, msg, wParam, lParam);
+}
+
+LRESULT CALLBACK WindowWrapper::RealWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	switch (msg) {
 	case WM_MOUSEMOVE:
-		InputManager::SetMousePos(Utility::Point(LOWORD(lParam), HIWORD(lParam)));
+		InputManager::SetMousePos(Utility::Vector2(LOWORD(lParam), HIWORD(lParam)));
 		return 0;
 
 	case WM_DESTROY:
