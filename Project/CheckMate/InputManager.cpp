@@ -11,5 +11,3 @@ Utility::Vector2 InputManager::GetMousePos() const noexcept {
 void InputManager::SetMousePos(Utility::Vector2 pos) noexcept {
 	m_mousePos = pos;
 }
-
-Utility::Vector2 InputManager::m_mousePos{};

@@ -1,16 +1,21 @@
 #pragma once
 
 #include "stdafx.h"
-#include "SettingValue.h"
+#include "InputManager.h"
+#include "RenderManager.h"
+
+struct SettingValue;
 
 class WindowWrapper {
 private:
 	HINSTANCE m_hInstance;
 	HWND m_hWnd;
-	ULONG_PTR m_gdiplusToken;
+
+	std::unique_ptr<InputManager> m_pInputManager;
+	std::unique_ptr<RenderManager> m_pRenderManager;
 
 protected:
-	WindowWrapper();
+	WindowWrapper() = default;
 	virtual ~WindowWrapper() = default;
 
 public:
@@ -35,5 +40,11 @@ private:
 public:
 	const HINSTANCE GetHInstance() const noexcept;
 	const HWND GetHWnd() const noexcept;
-};
 
+	const InputManager& GetInputManager() const noexcept;
+	const RenderManager& GetRenderManager() const noexcept;
+
+protected:
+	void BeginRender();
+	void EndRender();
+};

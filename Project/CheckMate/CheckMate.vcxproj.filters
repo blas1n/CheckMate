@@ -37,15 +37,6 @@
     <Filter Include="Header">
       <UniqueIdentifier>{9e14cb4b-ad67-4700-a962-964630a741ff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Component">
-      <UniqueIdentifier>{ba5571d6-891b-40c8-8ac2-ee2ccf04bf6c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Component\Interface">
-      <UniqueIdentifier>{dbc8cd48-6b1e-484d-a0bf-b4d04958fc1f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Component\Components">
-      <UniqueIdentifier>{41599dda-8fee-4499-94e0-619ff1c13d9a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Utility">
       <UniqueIdentifier>{28695e42-ad07-4bab-8cbd-18440c9eefed}</UniqueIdentifier>
     </Filter>
@@ -58,18 +49,6 @@
     <Filter Include="Framework\Director\WindowWrapper">
       <UniqueIdentifier>{99cc2b57-740e-4015-b2be-8b8f54369e92}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Director\InputManager">
-      <UniqueIdentifier>{cdd44b9c-72d5-45fb-8a66-0b6f235d2eec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Component\Components\Renderer">
-      <UniqueIdentifier>{de224b73-708a-482b-941a-3b9068710a4a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Component\Components\Transform">
-      <UniqueIdentifier>{743376c1-4dd9-47ac-8d0a-c22f2cb4b48a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Component\Components\Player">
-      <UniqueIdentifier>{9e9a050f-1fcd-4d7e-aa4c-a3ead15cf359}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Scene\Scene">
       <UniqueIdentifier>{bceb8dbd-0584-4b27-85b3-727fbe9ce34f}</UniqueIdentifier>
     </Filter>
@@ -78,6 +57,27 @@
     </Filter>
     <Filter Include="Framework\Utility\Math">
       <UniqueIdentifier>{1fe2c329-7b46-4aa7-9033-0efc72fe4550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\MiddleWare">
+      <UniqueIdentifier>{f744ca80-3197-4c22-8fa7-46757767bdc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\MiddleWare\InputManager">
+      <UniqueIdentifier>{cdd44b9c-72d5-45fb-8a66-0b6f235d2eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\MiddleWare\RenderManager">
+      <UniqueIdentifier>{f0e5520c-93f4-4f12-8ce7-5d31c4a1859c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\IComponent">
+      <UniqueIdentifier>{c4f37850-cfba-42d4-a71d-b60f1583db50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Player">
+      <UniqueIdentifier>{9e9a050f-1fcd-4d7e-aa4c-a3ead15cf359}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Renderer">
+      <UniqueIdentifier>{de224b73-708a-482b-941a-3b9068710a4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Transform">
+      <UniqueIdentifier>{743376c1-4dd9-47ac-8d0a-c22f2cb4b48a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -109,22 +109,25 @@
       <Filter>Framework\Director\WindowWrapper</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
-      <Filter>Framework\Director\InputManager</Filter>
+      <Filter>Framework\MiddleWare\InputManager</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Game\Component\Components\Renderer</Filter>
+      <Filter>Game\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
-      <Filter>Game\Component\Components\Transform</Filter>
+      <Filter>Game\Transform</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Game\Component\Components\Player</Filter>
+      <Filter>Game\Player</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
       <Filter>Framework\Utility\Vector2</Filter>
     </ClCompile>
     <ClCompile Include="Math.cpp">
       <Filter>Framework\Utility\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>Framework\MiddleWare\RenderManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,9 +152,6 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="IComponent.h">
-      <Filter>Game\Component\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Framework\Scene\Scene</Filter>
     </ClInclude>
@@ -165,22 +165,28 @@
       <Filter>Framework\Director\WindowWrapper</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>Framework\Director\InputManager</Filter>
+      <Filter>Framework\MiddleWare\InputManager</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Game\Component\Components\Renderer</Filter>
+      <Filter>Game\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
-      <Filter>Game\Component\Components\Transform</Filter>
+      <Filter>Game\Transform</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Game\Component\Components\Player</Filter>
+      <Filter>Game\Player</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>Framework\Utility\Vector2</Filter>
     </ClInclude>
     <ClInclude Include="Math.h">
       <Filter>Framework\Utility\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.h">
+      <Filter>Framework\MiddleWare\RenderManager</Filter>
+    </ClInclude>
+    <ClInclude Include="IComponent.h">
+      <Filter>Framework\IComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

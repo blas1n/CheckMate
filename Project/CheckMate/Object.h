@@ -14,7 +14,7 @@ private:
 	ComponentList m_components;
 
 public:
-	Object(std::string, const Utility::Vector2 = Utility::Vector2());
+	Object(std::string, const Utility::Vector2 = Utility::Vector2(), const Utility::Vector2 = Utility::Vector2(1, 1), const float = 0);
 	virtual ~Object() = default;
 
 public:

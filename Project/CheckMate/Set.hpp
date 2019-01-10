@@ -17,7 +17,7 @@ void SettingWindow(SettingValue& value) {
 }
 
 void SettingGame() {
-	auto& sceneManager = GameDirector::GetGameDirector()->GetSceneManager();
+	auto& sceneManager = GameDirector::GetGameDirector().GetSceneManager();
 
 	sceneManager.RegisterScene("Title");
 	sceneManager.RegisterScene("Home");
@@ -26,7 +26,7 @@ void SettingGame() {
 
 	sceneManager.ReserveChangeScene("Title");
 
-	auto& player = sceneManager.GetScene("Title").AddObject("Player", Utility::Vector2(500, 40));
+	auto& player = sceneManager.GetScene("Title").AddObject("Player", Utility::Vector2(500, 200), Utility::Vector2(0.3f, 0.3f));
 	player.AddComponent<Renderer>().SetSprite(MAKEINTRESOURCE(IDB_PNG1));
 	player.AddComponent<Player>();
 }

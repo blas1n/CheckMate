@@ -4,21 +4,21 @@
 
 Renderer::Renderer(Object* entity)
 	: IComponent(entity),
-	m_sprite(new Sprite()) {}
+	m_sprite(),
+	m_transform(GetEntity().GetComponent<Transform>()) {}
 
 void Renderer::Init() {}
 
 void Renderer::Update() {
-	auto pos = GetEntity().GetComponent<Transform>().GetPos();
-	m_sprite->Draw(pos.GetX(), pos.GetY());
+	m_sprite.Draw(m_transform.GetPos(), m_transform.GetScale(), m_transform.GetAngle());
 }
 
 void Renderer::Clear() {}
 
 const Sprite& Renderer::GetSprite() const noexcept {
-	return *m_sprite;
+	return m_sprite;
 }
 
 bool Renderer::SetSprite(LPWSTR id) noexcept {
-	return m_sprite->LoadSprite(id);
+	return m_sprite.LoadSprite(id);
 }

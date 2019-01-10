@@ -1,30 +1,13 @@
 #include "Vector2.h"
-#include "Math.h"
 
 namespace Utility {
 
-	Vector2::Vector2(const float x, const float y)
-		: m_x(x), m_y(y) {}
+	Vector2::Vector2(const float _x, const float _y)
+		: x(_x), y(_y) {}
 
 	void Vector2::Set(const float x, const float y) noexcept {
-		m_x = x;
-		m_y = y;
-	}
-
-	float Vector2::GetX() const noexcept {
-		return m_x;
-	}
-
-	void Vector2::SetX(const float x) noexcept {
-		m_x = x;
-	}
-
-	float Vector2::GetY() const noexcept {
-		return m_y;
-	}
-
-	void Vector2::SetY(const float y) noexcept {
-		m_y = y;
+		this->x = x;
+		this->y = y;
 	}
 
 	Vector2 Vector2::operator+=(const Vector2& rhs) noexcept {
@@ -44,11 +27,11 @@ namespace Utility {
 	}
 
 	float Vector2::GetLength() const noexcept {
-		return std::sqrtf(m_x * m_x + m_y * m_y);
+		return std::sqrtf(x * x + y * y);
 	}
 
 	float Vector2::GetSqrLength() const noexcept {
-		return m_x * m_x + m_y * m_y;
+		return x * x + y * y;
 	}
 
 	Vector2 Vector2::GetNormalize() const noexcept {
@@ -61,23 +44,23 @@ namespace Utility {
 	}
 
 	Vector2 operator+(const Vector2& lhs, const Vector2& rhs) {
-		return Vector2(lhs.GetX() + rhs.GetX(), lhs.GetY() + rhs.GetY());
+		return Vector2(lhs.x + rhs.x, lhs.y + rhs.y);
 	}
 
 	Vector2 operator-(const Vector2& lhs, const Vector2& rhs) {
-		return Vector2(lhs.GetX() - rhs.GetX(), lhs.GetY() - rhs.GetY());
+		return Vector2(lhs.x - rhs.x, lhs.y - rhs.y);
 	}
 
 	Vector2 operator*(const Vector2& lhs, const float& rhs) {
-		return Vector2(lhs.GetX() * rhs, lhs.GetY() * rhs);
+		return Vector2(lhs.x * rhs, lhs.x * rhs);
 	}
 
 	Vector2 operator/(const Vector2& lhs, const float& rhs) {
-		return Vector2(lhs.GetX() / rhs, lhs.GetY() / rhs);
+		return Vector2(lhs.x / rhs, lhs.y / rhs);
 	}
 
 	bool operator==(const Vector2& lhs, const Vector2& rhs) {
-		return (lhs.GetX() == rhs.GetX()) && (lhs.GetY() == rhs.GetY());
+		return (lhs.x == rhs.x) && (lhs.y == rhs.y);
 	}
 
 	bool operator!=(const Vector2& lhs, const Vector2& rhs) {
@@ -85,11 +68,11 @@ namespace Utility {
 	}
 
 	float Dot(const Vector2& lhs, const Vector2& rhs) {
-		return lhs.GetX() * rhs.GetX() + lhs.GetY() * rhs.GetY();
+		return lhs.x * rhs.x + lhs.y * rhs.y;
 	}
 
 	Vector2 Max(const Vector2& lhs, const Vector2& rhs) {
-		return (lhs.GetX() - rhs.GetX()) + (lhs.GetY() - rhs.GetY()) > 0 ? lhs : rhs;
+		return (lhs.x - rhs.x) + (lhs.y - rhs.y) > 0 ? lhs : rhs;
 	}
 
 	Vector2 Min(const Vector2& lhs, const Vector2& rhs) {

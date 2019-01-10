@@ -1,7 +1,6 @@
 #pragma once
 
 #include "stdafx.h"
-#include "WindowWrapper.h"
 #include "Vector2.h"
 
 class InputManager {
@@ -17,10 +16,10 @@ public:
 	};
 
 private:
-	static Utility::Vector2 m_mousePos;
+	Utility::Vector2 m_mousePos;
 
 public:
 	bool GetKey(Key key) const noexcept;
 	Utility::Vector2 GetMousePos() const noexcept;
-	static void SetMousePos(Utility::Vector2) noexcept;
+	void SetMousePos(Utility::Vector2) noexcept;
 };

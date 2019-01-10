@@ -1,18 +1,9 @@
 #include "WindowWrapper.h"
-#include "InputManager.h"
 #include "SettingValue.h"
 #include "Set.hpp"
 
-WindowWrapper::WindowWrapper()
-	: m_hInstance(nullptr),
-	m_hWnd(nullptr),
-	m_gdiplusToken(0) {}
-
 void WindowWrapper::Init(HINSTANCE hInstance) {
 	m_hInstance = hInstance;
-
-	GdiplusStartupInput gdiplusStartupInput;
-	GdiplusStartup(&m_gdiplusToken, &gdiplusStartupInput, nullptr);
 
 	SettingValue value{};
 	value.lpfnWndProc = WndProc;
@@ -24,12 +15,18 @@ void WindowWrapper::Init(HINSTANCE hInstance) {
 	CreateWnd(value);
 	ShowWnd(value);
 
+	m_pInputManager = std::make_unique<InputManager>();
+	m_pRenderManager = std::make_unique<RenderManager>(m_hWnd);
+
+	RECT wndRect;
+	GetClientRect(m_hWnd, &wndRect);
+	m_pRenderManager->SetWndRect(wndRect);
+
 	SetWindowLongPtr(m_hWnd, GWLP_USERDATA, reinterpret_cast<LONG>(this));
 }
 
 void WindowWrapper::Release() noexcept {
 	DestroyWindow(m_hWnd);
-	GdiplusShutdown(m_gdiplusToken);
 }
 
 int WindowWrapper::Run(HINSTANCE hInstance) {
@@ -59,9 +56,24 @@ LRESULT CALLBACK WindowWrapper::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPAR
 }
 
 LRESULT CALLBACK WindowWrapper::RealWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+	HDC hDC;
+	PAINTSTRUCT ps;
+	RECT wndRect;
+	
 	switch (msg) {
+	case WM_PAINT:
+		hDC = BeginPaint(hWnd, &ps);
+		m_pRenderManager->RenderOnScreen(hDC);
+		EndPaint(hWnd, &ps);
+		return 0;
+
+	case WM_MOVE: case WM_SIZE:
+		GetClientRect(hWnd, &wndRect);
+		m_pRenderManager->SetWndRect(wndRect);
+		return 0;
+
 	case WM_MOUSEMOVE:
-		InputManager::SetMousePos(Utility::Vector2(LOWORD(lParam), HIWORD(lParam)));
+		m_pInputManager->SetMousePos(Utility::Vector2(LOWORD(lParam), HIWORD(lParam)));
 		return 0;
 
 	case WM_DESTROY:
@@ -106,4 +118,20 @@ const HINSTANCE WindowWrapper::GetHInstance() const noexcept {
 
 const HWND WindowWrapper::GetHWnd() const noexcept {
 	return m_hWnd;
+}
+
+const InputManager& WindowWrapper::GetInputManager() const noexcept {
+	return *m_pInputManager;
+}
+
+const RenderManager& WindowWrapper::GetRenderManager() const noexcept {
+	return *m_pRenderManager;
+}
+
+void WindowWrapper::BeginRender() {
+	m_pRenderManager->BeginRender();
+}
+
+void WindowWrapper::EndRender() {
+	m_pRenderManager->EndRender();
 }

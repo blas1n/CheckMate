@@ -2,11 +2,14 @@
 #include "Object.h"
 #include "Transform.h"
 
-Object::Object(std::string name, const Utility::Vector2 pos)
+Object::Object(std::string name, const Utility::Vector2 pos, const Utility::Vector2 scale, const float angle)
 	: m_name(name),
 	m_components() {
 
-	AddComponent<Transform>().SetPos(pos);
+	auto& transform = AddComponent<Transform>();
+	transform.SetPos(pos);
+	transform.SetScale(scale);
+	transform.SetAngle(angle);
 }
 
 void Object::Init() {

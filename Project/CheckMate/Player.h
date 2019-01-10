@@ -5,11 +5,13 @@
 #include "Renderer.h"
 #include "IComponent.h"
 
+class InputManager;
 class Transform;
 
 class Player : public IComponent {
 private:
-	Transform& transform;
+	const InputManager& m_inputManager;
+	Transform& m_transform;
 
 public:
 	Player(Object*);

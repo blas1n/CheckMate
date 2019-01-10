@@ -1,10 +1,12 @@
 #pragma once
 
+#include "Math.h"
+
 namespace Utility {
 
 	struct Vector2 {
-	private:
-		float m_x, m_y;
+	public:
+		float x, y;
 
 	public:
 		Vector2() = default;
@@ -12,12 +14,6 @@ namespace Utility {
 
 	public:
 		void Set(const float, const float) noexcept;
-
-		float GetX() const noexcept;
-		void SetX(const float) noexcept;
-
-		float GetY() const noexcept;
-		void SetY(const float) noexcept;
 
 	public:
 		Vector2 operator+=(const Vector2&) noexcept;

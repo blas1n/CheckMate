@@ -1,5 +1,6 @@
 #pragma once
 
+#include "GameDirector.h"
 #include "Time.h"
 
 class Object;

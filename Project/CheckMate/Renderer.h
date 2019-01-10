@@ -3,9 +3,12 @@
 #include "IComponent.h"
 #include "Sprite.h"
 
+class Transform;
+
 class Renderer : public IComponent {
 private:
-	Sprite* m_sprite;
+	Sprite m_sprite;
+	const Transform& m_transform;
 
 public:
 	Renderer(Object*);

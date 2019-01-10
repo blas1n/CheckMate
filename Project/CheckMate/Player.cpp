@@ -1,29 +1,31 @@
 #include "Player.h"
+#include "InputManager.h"
 #include "Transform.h"
 
 Player::Player(Object* entity)
 	: IComponent(entity),
-	transform(GetEntity().GetComponent<Transform>()) {}
+	m_inputManager(GameDirector::GetGameDirector().GetInputManager()),
+	m_transform(GetEntity().GetComponent<Transform>()) {}
 
 void Player::Init() {}
 
 void Player::Update() {
-	const auto& inputManager = GameDirector::GetGameDirector()->GetInputManager();
+	//m_transform.SetAngle(m_transform.GetAngle() + (30 * Time::GetDeltaTime()));
 
-	if (inputManager.GetKey(InputManager::Key::LButton))
-		transform.SetPos(inputManager.GetMousePos());
+	if (m_inputManager.GetKey(InputManager::Key::LButton))
+		m_transform.SetPos(m_inputManager.GetMousePos());
 
-	if (inputManager.GetKey(InputManager::Key::Left))
-		transform.SetPos(transform.GetPos().GetX() - (300.0f * Time::GetDeltaTime()), transform.GetPos().GetY());
+	if (m_inputManager.GetKey(InputManager::Key::Left))
+		m_transform.SetPos(m_transform.GetPos().x - (300.0f * Time::GetDeltaTime()), m_transform.GetPos().y);
 
-	if (inputManager.GetKey(InputManager::Key::Right))
-		transform.SetPos(transform.GetPos().GetX() + (300.0f * Time::GetDeltaTime()), transform.GetPos().GetY());
+	if (m_inputManager.GetKey(InputManager::Key::Right))
+		m_transform.SetPos(m_transform.GetPos().x + (300.0f * Time::GetDeltaTime()), m_transform.GetPos().y);
 
-	if (inputManager.GetKey(InputManager::Key::Up))
-		transform.SetPos(transform.GetPos().GetX(), transform.GetPos().GetY() - (300.0f * Time::GetDeltaTime()));
+	if (m_inputManager.GetKey(InputManager::Key::Up))
+		m_transform.SetPos(m_transform.GetPos().x, m_transform.GetPos().y - (300.0f * Time::GetDeltaTime()));
 
-	if (inputManager.GetKey(InputManager::Key::Down))
-		transform.SetPos(transform.GetPos().GetX(), transform.GetPos().GetY() + (300.0f * Time::GetDeltaTime()));
+	if (m_inputManager.GetKey(InputManager::Key::Down))
+		m_transform.SetPos(m_transform.GetPos().x, m_transform.GetPos().y + (300.0f * Time::GetDeltaTime()));
 }
 
 void Player::Clear() {}

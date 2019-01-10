@@ -23,5 +23,5 @@ private:
 
 public:
 	Object& FindObject(const std::string& name) const;
-	Object& AddObject(const std::string& name, const Utility::Vector2 = Utility::Vector2());
+	Object& AddObject(const std::string& name, const Utility::Vector2 = Utility::Vector2(), const Utility::Vector2 = Utility::Vector2(1, 1), const float = 0);
 };

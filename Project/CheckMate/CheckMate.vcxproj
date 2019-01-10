@@ -147,6 +147,7 @@
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Math.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="RenderManager.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />

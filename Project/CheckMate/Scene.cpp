@@ -25,7 +25,7 @@ Object& Scene::FindObject(const std::string& name) const {
 	throw;
 }
 
-Object& Scene::AddObject(const std::string& name, const Utility::Vector2 pos) {
-	m_objects.emplace_back(Object(name, pos));
+Object& Scene::AddObject(const std::string& name, const Utility::Vector2 pos, const Utility::Vector2 scale, const float angle) {
+	m_objects.emplace_back(Object(name, pos, scale, angle));
 	return m_objects.back();
 }

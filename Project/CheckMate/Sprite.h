@@ -2,14 +2,14 @@
 
 #include "stdafx.h"
 #include "GameDirector.h"
-#include <combaseapi.h>
+#include "RenderManager.h"
+#include "Vector2.h"
 
 class Sprite {
 private:
-	Bitmap* m_pBitmap;
+	Gdiplus::Bitmap* m_pBitmap;
 	LPWSTR m_name;
 	DWORD m_size;
-	Color m_color;
 
 public:
 	Sprite() = default;
@@ -17,7 +17,7 @@ public:
 	Sprite(const Sprite&);
 
 public:
-	void Draw(float, float) const;
+	void Draw(const Utility::Vector2&, const Utility::Vector2&, const float&) const;
 
 public:
 	bool LoadSprite(const LPWSTR name);
@@ -27,8 +27,4 @@ public:
 	LPWSTR GetName() const noexcept;
 	DWORD GetSize() const noexcept;
 	bool Empty() const noexcept;
-
-public:
-	Color GetColor() const noexcept;
-	void SetColor(Color) noexcept;
 };
