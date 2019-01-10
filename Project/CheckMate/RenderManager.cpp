@@ -25,19 +25,15 @@ void RenderManager::RenderOnScreen(HDC hDC) {
 	m_pCachedBitmap.reset();
 }
 
-void RenderManager::RenderImage(Gdiplus::Image* image, const Utility::Vector2& pos, const Utility::Vector2& scale, const float& angle) const {
+void RenderManager::Render(Gdiplus::Image* image, const Utility::Vector2& pos, const Utility::Vector2& scale, const float& angle) const {
 	Gdiplus::Matrix matrix{};
 	matrix.Scale(scale.x, scale.y);
-	matrix.RotateAt(-angle, Gdiplus::PointF(image->GetWidth() * 0.5f, image->GetHeight() * 0.5f));
 	matrix.Translate((pos.x / scale.x) - image->GetWidth() * 0.5f, (pos.y / scale.y) - image->GetHeight() * 0.5f);
+	matrix.RotateAt(-angle, Gdiplus::PointF(image->GetWidth() * 0.5f, image->GetHeight() * 0.5f));
 
 	m_pMemGraphics->SetTransform(&matrix);
 	m_pMemGraphics->DrawImage(image, 0, 0, image->GetWidth(), image->GetHeight());
 	m_pMemGraphics->ResetTransform();
-}
-
-void RenderManager::RenderText() const {
-	//m_pMemGraphics->DrawString();
 }
 
 void RenderManager::BeginRender() {

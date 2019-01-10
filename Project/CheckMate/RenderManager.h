@@ -27,8 +27,7 @@ public:
 	void RenderOnScreen(HDC);
 
 public:
-	void RenderImage(Gdiplus::Image*, const Utility::Vector2&, const Utility::Vector2&, const float&) const;
-	void RenderText() const;
+	void Render(Gdiplus::Image*, const Utility::Vector2&, const Utility::Vector2&, const float&) const;
 
 public:
 	void BeginRender();

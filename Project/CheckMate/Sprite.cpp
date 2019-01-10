@@ -9,7 +9,7 @@ Sprite::Sprite(const Sprite& other) : Sprite() {
 }
 
 void Sprite::Draw(const Utility::Vector2& pos, const Utility::Vector2& scale, const float& angle) const {
-	GameDirector::GetGameDirector().GetRenderManager().RenderImage(m_pBitmap, pos, scale, angle);
+	GameDirector::GetGameDirector().GetRenderManager().Render(m_pBitmap, pos, scale, angle);
 }
 
 bool Sprite::LoadSprite(const LPWSTR name) {
@@ -20,13 +20,13 @@ bool Sprite::LoadSprite(const LPWSTR name) {
 	auto hResource = FindResource(hInstance, m_name, TEXT("PNG"));
 	if (!hResource) return false;
 
-	m_size = SizeofResource(hInstance, hResource);
+	auto size = SizeofResource(hInstance, hResource);
 	auto hGlobal = LoadResource(hInstance, hResource);
 	auto pData = LockResource(hGlobal);
 
-	auto hBuffer = GlobalAlloc(GMEM_MOVEABLE, m_size);
+	auto hBuffer = GlobalAlloc(GMEM_MOVEABLE, size);
 	auto pBuffer = GlobalLock(hBuffer);
-	CopyMemory(pBuffer, pData, m_size);
+	CopyMemory(pBuffer, pData, size);
 	GlobalUnlock(hBuffer);
 
 	IStream* pStream;
@@ -37,18 +37,8 @@ bool Sprite::LoadSprite(const LPWSTR name) {
 	return m_pBitmap && m_pBitmap->GetLastStatus() == Gdiplus::Ok;
 }
 
-HBITMAP Sprite::GetHBitmap() const noexcept {
-	HBITMAP hBitmap;
-	m_pBitmap->GetHBITMAP(Gdiplus::Color(0, 0, 0), &hBitmap);
-	return hBitmap;
-}
-
 LPWSTR Sprite::GetName() const noexcept {
 	return m_name;
-}
-
-DWORD Sprite::GetSize() const noexcept {
-	return m_size;
 }
 
 bool Sprite::Empty() const noexcept {

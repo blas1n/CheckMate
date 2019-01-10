@@ -9,7 +9,6 @@ class Sprite {
 private:
 	Gdiplus::Bitmap* m_pBitmap;
 	LPWSTR m_name;
-	DWORD m_size;
 
 public:
 	Sprite() = default;
@@ -21,10 +20,6 @@ public:
 
 public:
 	bool LoadSprite(const LPWSTR name);
-
-public:
-	HBITMAP GetHBitmap() const noexcept;
 	LPWSTR GetName() const noexcept;
-	DWORD GetSize() const noexcept;
 	bool Empty() const noexcept;
 };

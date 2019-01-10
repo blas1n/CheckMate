@@ -22,4 +22,3 @@ public:
 	const Sprite& GetSprite() const noexcept;
 	bool SetSprite(LPWSTR) noexcept;
 };
-

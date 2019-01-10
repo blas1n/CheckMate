@@ -22,9 +22,6 @@
     <Filter Include="Framework\Scene\SceneManager">
       <UniqueIdentifier>{276dc578-df80-4e26-8b82-be7d97c08f4f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Sprite">
-      <UniqueIdentifier>{b3f6ce63-58ea-4553-b7e2-8bc774daa5a0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Setting\SettingValue">
       <UniqueIdentifier>{2a650f6d-5b38-4207-beb2-356312473dfa}</UniqueIdentifier>
     </Filter>
@@ -79,6 +76,9 @@
     <Filter Include="Game\Transform">
       <UniqueIdentifier>{743376c1-4dd9-47ac-8d0a-c22f2cb4b48a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Sprite">
+      <UniqueIdentifier>{3a44d1b7-45f1-412d-9352-9fb773e94f25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -89,9 +89,6 @@
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Framework\Scene\SceneManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Framework\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="SettingValue.cpp">
       <Filter>Setting\SettingValue</Filter>
@@ -129,6 +126,9 @@
     <ClCompile Include="RenderManager.cpp">
       <Filter>Framework\MiddleWare\RenderManager</Filter>
     </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Framework\Sprite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h">
@@ -136,9 +136,6 @@
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Framework\Scene\SceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Framework\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="SettingValue.h">
       <Filter>Setting\SettingValue</Filter>
@@ -187,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="IComponent.h">
       <Filter>Framework\IComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Framework\Sprite</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

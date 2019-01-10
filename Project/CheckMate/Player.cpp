@@ -10,7 +10,7 @@ Player::Player(Object* entity)
 void Player::Init() {}
 
 void Player::Update() {
-	//m_transform.SetAngle(m_transform.GetAngle() + (30 * Time::GetDeltaTime()));
+	m_transform.SetAngle(m_transform.GetAngle() + (100 * Time::GetDeltaTime()));
 
 	if (m_inputManager.GetKey(InputManager::Key::LButton))
 		m_transform.SetPos(m_inputManager.GetMousePos());
