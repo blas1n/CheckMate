@@ -4,7 +4,6 @@
 
 struct SettingValue {
 	SettingValue();
-	~SettingValue() = default;
 
 	UINT					cbSize;
 	UINT					style;
