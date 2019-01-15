@@ -1,0 +1,13 @@
+﻿  BombManager.c
+  EnemyManager.c
+  main.c
+c:\users\user\desktop\project (school)\checkmate\main.c(20): warning C4047: '함수': 'LPCWSTR'의 간접 참조 수준이 'int'과(와) 다릅니다.
+c:\users\user\desktop\project (school)\checkmate\main.c(20): warning C4024: 'LoadIconW': 형식 및 실제 매개 변수 2의 형식이 서로 다릅니다.
+c:\users\user\desktop\project (school)\checkmate\main.c(199): warning C4276: 'IncreaseTime': 프로토타입을 제공하지 않았습니다. 매개 변수가 없는 것으로 간주됩니다.
+  MapManager.c
+  PlayerControl.c
+  Renderer.c
+c:\users\user\desktop\project (school)\checkmate\renderer.c(189): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  TimeManager.c
+  코드를 생성하고 있습니다...
+  CheckMate.vcxproj -> C:\Users\user\Desktop\Project (School)\CheckMate\Debug\CheckMate.exe
